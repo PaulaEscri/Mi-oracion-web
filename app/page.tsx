@@ -1,65 +1,171 @@
-import Image from "next/image";
+import { DownloadButtons } from "@/components/DownloadButtons";
+import { FeatureCard } from "@/components/FeatureCard";
+import { siteConfig } from "@/config/site";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen">
+      {/* 1. HERO SECTION */}
+      <section className="relative px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-24 lg:py-32 max-w-4xl mx-auto text-center animate-fade-in">
+        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-text-primary mb-4 tracking-tight">
+          NIYYAH
+        </h1>
+
+        <p className="text-2xl md:text-3xl text-text-secondary mb-6 font-medium">
+          Mi Oración
+        </p>
+
+        <p className="text-xl md:text-2xl text-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">
+          Una app musulmana para tu práctica espiritual, sin presión ni culpa.
+        </p>
+
+        {/* Micro bullets */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 text-text-secondary stagger-children">
+          <div className="flex items-center gap-2 justify-center">
+            <span className="text-accent">✓</span>
+            <span>Calma y minimalismo</span>
+          </div>
+          <div className="flex items-center gap-2 justify-center">
+            <span className="text-accent">✓</span>
+            <span>Diario y retos suaves</span>
+          </div>
+          <div className="flex items-center gap-2 justify-center">
+            <span className="text-accent">✓</span>
+            <span>Privacidad total (todo offline)</span>
+          </div>
+        </div>
+
+        <DownloadButtons className="justify-center" />
+      </section>
+
+      {/* 2. DIFFERENTIATION BLOCK */}
+      <section className="px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-24 bg-card/50 animate-slide-up">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+            No todas las apps espirituales se sienten igual.
+          </h2>
+          <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-4">
+            NIYYAH no te mide ni te juzga.
+          </p>
+          <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
+            Si hoy no puedes, está bien. Vuelves cuando quieras.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* 3. FEATURES (4 CARDS) */}
+      <section className="px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-24 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 stagger-children">
+          <FeatureCard
+            icon="🧭"
+            title="Qibla y horarios de oración"
+            description="Encuentra la dirección correcta y conoce los horarios adaptados a tu ubicación."
+          />
+          <FeatureCard
+            icon="📓"
+            title="Diario espiritual privado"
+            description="Reflexiona y escribe sin que nadie más lo vea. Todo queda en tu dispositivo."
+          />
+          <FeatureCard
+            icon="🌙"
+            title="Retos suaves, sin penalización"
+            description="Pequeños desafíos que te acompañan, sin presión ni racha que perder."
+          />
+          <FeatureCard
+            icon="🤲"
+            title="Duas y recordatorios respetuosos"
+            description="Recordatorios gentiles que te invitan, nunca te exigen."
+          />
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* 4. PRIVACY BLOCK */}
+      <section className="px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-24 bg-gradient-to-b from-card/30 to-background">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-8">
+            Tu espiritualidad es solo tuya.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left stagger-children">
+            <div className="bg-card p-6 rounded-[var(--radius-card)] shadow-md">
+              <div className="text-3xl mb-3">🔒</div>
+              <h3 className="font-semibold text-text-primary mb-2">Sin cuentas</h3>
+              <p className="text-text-secondary text-sm">No necesitas registrarte ni iniciar sesión.</p>
+            </div>
+
+            <div className="bg-card p-6 rounded-[var(--radius-card)] shadow-md">
+              <div className="text-3xl mb-3">☁️</div>
+              <h3 className="font-semibold text-text-primary mb-2">Sin servidores</h3>
+              <p className="text-text-secondary text-sm">Tus datos nunca salen de tu teléfono.</p>
+            </div>
+
+            <div className="bg-card p-6 rounded-[var(--radius-card)] shadow-md">
+              <div className="text-3xl mb-3">📱</div>
+              <h3 className="font-semibold text-text-primary mb-2">Todo local</h3>
+              <p className="text-text-secondary text-sm">Se guarda en tu dispositivo, bajo tu control.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. RAMADAN SECTION (conditional) */}
+      {siteConfig.showRamadanSection && (
+        <section className="px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-24 max-w-3xl mx-auto text-center">
+          <div className="bg-gradient-to-br from-accent/5 to-accent/10 p-8 md:p-12 rounded-[var(--radius-card)] border border-accent/20">
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              Este Ramadán, con más calma.
+            </h2>
+            <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+              Activa el Modo Ramadán para una experiencia sin distracciones.
+            </p>
+            <p className="text-sm text-text-secondary mb-8">
+              Pago único · No es suscripción
+            </p>
+            <DownloadButtons className="justify-center" />
+          </div>
+        </section>
+      )}
+
+      {/* 6. FINAL CTA */}
+      <section className="px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-24 bg-card/50 text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+            Descarga NIYYAH gratis
+          </h2>
+          <p className="text-lg text-text-secondary mb-8 leading-relaxed">
+            y acompaña tu práctica espiritual con calma.
+          </p>
+          <DownloadButtons className="justify-center" />
+        </div>
+      </section>
+
+      {/* 7. FOOTER */}
+      <footer className="px-8 sm:px-12 md:px-16 lg:px-24 py-12 border-t border-text-secondary/10">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
+            <div className="flex gap-6 text-sm text-text-secondary">
+              <Link
+                href="/privacidad"
+                className="hover:text-accent transition-colors"
+              >
+                Política de privacidad
+              </Link>
+              <Link
+                href="/soporte"
+                className="hover:text-accent transition-colors"
+              >
+                Soporte
+              </Link>
+            </div>
+          </div>
+
+          <div className="text-center text-sm text-text-secondary/70 pt-6 border-t border-text-secondary/10">
+            <p className="mb-2">{siteConfig.legalDisclaimer}</p>
+            <p>© {new Date().getFullYear()} NIYYAH. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }
