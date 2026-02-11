@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import {
   Heart,
   BookOpen,
@@ -7,20 +6,11 @@ import {
   MoonStar,
   Shield,
   Sparkles,
-  Globe,
 } from "lucide-react";
 
 function Container({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      className="
-        mx-auto w-full
-        max-w-[1120px]
-        px-5 sm:px-8 lg:px-12
-        xl:max-w-[1240px]
-        2xl:max-w-[1320px]
-      "
-    >
+    <div className="mx-auto w-full max-w-[1180px] px-6 sm:px-10 lg:px-16">
       {children}
     </div>
   );
@@ -36,10 +26,7 @@ function Section({
   className?: string;
 }) {
   return (
-    <section
-      id={id}
-      className={`py-14 sm:py-18 lg:py-22 xl:py-24 ${className}`}
-    >
+    <section id={id} className={`py-14 sm:py-20 lg:py-24 ${className}`}>
       <Container>{children}</Container>
     </section>
   );
@@ -63,7 +50,7 @@ function PrimaryButton({
   return (
     <Link
       href={href}
-      className="inline-flex items-center justify-center rounded-full bg-[#5B8DEF] px-7 py-3.5 text-sm font-medium text-white shadow-[0_10px_28px_rgba(91,141,239,0.28)] transition-all duration-300 hover:bg-[#4A7CD8] hover:shadow-[0_14px_34px_rgba(91,141,239,0.34)]"
+      className="inline-flex items-center justify-center rounded-full bg-[#5B8DEF] px-8 py-3.5 text-sm font-medium text-white shadow-[0_10px_26px_rgba(91,141,239,0.28)] transition-all duration-300 hover:bg-[#4A7CD8] hover:shadow-[0_14px_34px_rgba(91,141,239,0.34)]"
     >
       {children}
     </Link>
@@ -80,7 +67,7 @@ function SecondaryLink({
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-1.5 text-sm font-medium text-black/55 transition-colors hover:text-black/80"
+      className="inline-flex items-center gap-1.5 text-sm font-medium text-black/60 transition-colors hover:text-black/80"
     >
       {children}
       <span aria-hidden className="text-xs">
@@ -100,9 +87,9 @@ function FeatureCard({
   desc: string;
 }) {
   return (
-    <div className="group rounded-3xl border border-black/[0.08] bg-white/65 p-6 shadow-[0_10px_28px_rgba(0,0,0,0.045)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)]">
-      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-black/[0.08] bg-gradient-to-br from-white to-gray-50/50 transition-transform duration-300 group-hover:scale-105">
-        <Icon className="h-5 w-5 text-black/60" strokeWidth={1.5} />
+    <div className="group rounded-3xl border border-black/[0.08] bg-white/65 p-7 shadow-[0_10px_26px_rgba(0,0,0,0.045)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_14px_34px_rgba(0,0,0,0.065)]">
+      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-black/[0.08] bg-gradient-to-br from-white to-gray-50/60 transition-transform duration-300 group-hover:scale-[1.03]">
+        <Icon className="h-5 w-5 text-black/55" strokeWidth={1.5} />
       </div>
       <h3 className="mb-2 text-[15px] font-semibold leading-snug text-black/80">
         {title}
@@ -122,9 +109,9 @@ function Step({
   desc: string;
 }) {
   return (
-    <div className="rounded-3xl border border-black/[0.08] bg-white/55 p-7 shadow-[0_10px_28px_rgba(0,0,0,0.045)] backdrop-blur-sm">
+    <div className="rounded-3xl border border-black/[0.08] bg-white/55 p-7 shadow-[0_8px_22px_rgba(0,0,0,0.04)] backdrop-blur-sm">
       <div className="mb-3 inline-flex items-center gap-3">
-        <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-black/[0.08] bg-gradient-to-br from-white to-gray-50/50 text-sm font-semibold text-black/60">
+        <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-black/[0.08] bg-gradient-to-br from-white to-gray-50/60 text-sm font-semibold text-black/55">
           {n}
         </span>
         <h3 className="text-[15px] font-semibold text-black/80">{title}</h3>
@@ -136,46 +123,35 @@ function Step({
 
 function Navbar() {
   return (
-    <div className="sticky top-0 z-50 border-b border-black/5 bg-[#F6F3EE]/70 backdrop-blur">
+    <div className="sticky top-0 z-50 border-b border-black/10 bg-[#F6F3EE]/80 backdrop-blur">
       <Container>
         <div className="flex h-16 items-center justify-between">
-          {/* Logo / Brand */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl border border-black/10 bg-white/70 text-sm font-semibold text-black/70 shadow-[0_8px_18px_rgba(0,0,0,0.04)]">
-              N
-            </span>
-            <span className="text-sm font-semibold tracking-tight text-black/80">
-              NIYYAH
-            </span>
+          <Link href="/" className="text-sm font-semibold tracking-wide text-black/80">
+            NIYYAH
           </Link>
 
-          {/* Right side */}
-          <div className="flex items-center gap-2">
-            {/* Idioma (placeholder, no hace nada por ahora) */}
-            <div className="relative">
-              <label className="sr-only" htmlFor="lang">
-                Idioma
-              </label>
-              <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2">
-                <Globe className="h-4 w-4 text-black/45" />
-              </div>
-              <select
-                id="lang"
-                defaultValue="es"
-                className="h-10 appearance-none rounded-full border border-black/10 bg-white/60 pl-9 pr-9 text-sm font-medium text-black/60 shadow-[0_8px_18px_rgba(0,0,0,0.03)] backdrop-blur transition hover:bg-white/75"
-                onChange={() => {
-                  // Placeholder: aún no hay i18n
-                  // Cuando lo implementemos: router.push(`/en`), etc.
-                }}
-              >
-                <option value="es">Español (pronto)</option>
-                <option value="en">English (soon)</option>
-                <option value="ar">العربية (قريبًا)</option>
-                <option value="fr">Français (bientôt)</option>
-              </select>
-            </div>
+          <div className="flex items-center gap-3">
+            <Link
+              href="#descargar"
+              className="inline-flex items-center justify-center rounded-full border border-black/15 bg-white/55 px-4 py-2 text-sm font-medium text-black/70 transition-colors hover:bg-white/70"
+            >
+              Descargar
+            </Link>
 
-            <PrimaryButton href="#descargar">Descargar</PrimaryButton>
+            {/* Idioma (dummy por ahora: sin onChange para evitar error Server Component) */}
+            <label className="sr-only" htmlFor="lang">
+              Idioma
+            </label>
+            <select
+              id="lang"
+              defaultValue="es"
+              className="h-10 rounded-full border border-black/15 bg-white/55 px-4 text-sm font-medium text-black/70 outline-none transition-colors hover:bg-white/70"
+            >
+              <option value="es">ES</option>
+              <option value="en">EN</option>
+              <option value="fr">FR</option>
+              <option value="ar">AR</option>
+            </select>
           </div>
         </div>
       </Container>
@@ -188,38 +164,38 @@ export default function Page() {
     <main className="min-h-screen bg-[#F6F3EE] text-black">
       <Navbar />
 
-      {/* HERO (más centrado + aire) */}
-      <section className="relative overflow-hidden pt-12 sm:pt-16 lg:pt-18">
-        {/* Fondo suave premium */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-24 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-white/50 blur-3xl" />
-          <div className="absolute -top-10 right-[-120px] h-[520px] w-[520px] rounded-full bg-blue-100/35 blur-3xl" />
-          <div className="absolute -bottom-28 left-[-140px] h-[520px] w-[520px] rounded-full bg-purple-100/25 blur-3xl" />
-        </div>
+      {/* Fondo suave “premium” */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-[-12%] top-[-10%] h-[520px] w-[520px] rounded-full bg-blue-200/25 blur-3xl" />
+        <div className="absolute right-[-12%] top-[6%] h-[560px] w-[560px] rounded-full bg-purple-200/18 blur-3xl" />
+        <div className="absolute left-[20%] bottom-[-18%] h-[520px] w-[520px] rounded-full bg-amber-200/12 blur-3xl" />
+      </div>
 
+      {/* HERO */}
+      <section className="relative overflow-hidden pt-10 sm:pt-14 lg:pt-18">
         <Container>
-          <div className="mx-auto max-w-[1180px]">
-            <div className="grid items-center gap-12 lg:gap-16 xl:grid-cols-2 xl:gap-20">
-              {/* Left - Content */}
-              <div className="mx-auto max-w-[560px] text-center xl:mx-0 xl:text-left">
-                <div className="mb-6 flex flex-wrap justify-center gap-2 xl:justify-start">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
+              {/* Left */}
+              <div className="text-center lg:text-left">
+                <div className="mb-6 flex flex-wrap justify-center gap-2 lg:justify-start">
                   <Pill>Calma y minimalismo</Pill>
                   <Pill>Privacidad real</Pill>
                   <Pill>Sin presión</Pill>
                 </div>
 
-                <h1 className="mb-6 text-[40px] font-medium leading-[1.12] tracking-[-0.02em] text-black/85 sm:text-[46px] lg:text-[52px]">
+                <h1 className="mb-6 text-[40px] font-semibold leading-[1.08] tracking-[-0.02em] text-black/85 sm:text-[52px] lg:text-[60px]">
                   Tu espiritualidad,
                   <br />
                   solo tuya
                 </h1>
 
-                <p className="mx-auto mb-8 max-w-[520px] text-[15px] leading-relaxed text-black/55 sm:text-base xl:mx-0">
+                <p className="mx-auto mb-9 max-w-[520px] text-[15px] leading-relaxed text-black/55 sm:text-base lg:mx-0">
                   Una app musulmana que respeta tu ritmo personal. Sin presión.
                   Sin culpa. Solo calma.
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center gap-4 xl:justify-start">
+                <div className="flex flex-wrap items-center justify-center gap-5 lg:justify-start">
                   <PrimaryButton href="#descargar">Descargar gratis</PrimaryButton>
                   <SecondaryLink href="#como-funciona">Ver cómo funciona</SecondaryLink>
                 </div>
@@ -227,72 +203,65 @@ export default function Page() {
                 <p className="mt-5 text-xs text-black/40">
                   Disponible en iOS y Android
                 </p>
+
+                {/* mini “vida” sin ruido */}
+                <div className="mt-10 flex items-center justify-center gap-6 text-xs text-black/40 lg:justify-start">
+                  <span className="rounded-full border border-black/10 bg-white/45 px-3 py-1">
+                    Sin anuncios intrusivos
+                  </span>
+                  <span className="rounded-full border border-black/10 bg-white/45 px-3 py-1">
+                    Diario privado
+                  </span>
+                  <span className="rounded-full border border-black/10 bg-white/45 px-3 py-1">
+                    A tu ritmo
+                  </span>
+                </div>
               </div>
 
-              {/* Right - iPhone Mockup */}
-              <div className="flex justify-center xl:justify-end">
+              {/* Right - iPhone */}
+              <div className="flex justify-center lg:justify-end">
                 <div className="relative">
-                  <div className="absolute -inset-10 rounded-[64px] bg-gradient-to-br from-blue-100/35 via-transparent to-purple-100/25 opacity-70 blur-3xl" />
+                  <div className="absolute -inset-10 rounded-[70px] bg-white/30 opacity-70 blur-2xl" />
+                  <div className="relative h-[520px] w-[270px] overflow-hidden rounded-[54px] border border-black/[0.12] bg-white shadow-[0_24px_70px_rgba(0,0,0,0.16),0_0_0_1px_rgba(255,255,255,0.55)_inset] sm:h-[580px] sm:w-[300px]">
+                    <div className="absolute left-1/2 top-3 z-10 h-7 w-28 -translate-x-1/2 rounded-full bg-black" />
+                    <div className="flex h-full w-full flex-col items-center justify-center bg-[#F6F3EE] px-8 pt-14 pb-8">
+                      <div className="mb-8 opacity-30">
+                        <MoonStar className="h-8 w-8 text-black/40" strokeWidth={1.5} />
+                      </div>
 
-                  <div className="relative">
-                    <div className="relative h-[520px] w-[270px] overflow-hidden rounded-[52px] border border-black/[0.12] bg-white shadow-[0_24px_70px_rgba(0,0,0,0.16),0_0_0_1px_rgba(255,255,255,0.55)_inset] sm:h-[560px] sm:w-[290px]">
-                      <div className="absolute left-1/2 top-3 z-10 h-7 w-28 -translate-x-1/2 rounded-full bg-black" />
-
-                      <div className="flex h-full w-full flex-col items-center justify-center bg-[#F6F3EE] px-8 pt-14 pb-8">
-                        <div className="mb-9 opacity-30">
-                          <MoonStar
-                            className="h-8 w-8 text-black/40"
-                            strokeWidth={1.5}
-                          />
-                        </div>
-
-                        <div className="w-full rounded-3xl border border-black/[0.08] bg-white/75 p-5 shadow-[0_10px_28px_rgba(0,0,0,0.06)] backdrop-blur">
-                          <p className="mb-3 text-center text-xs font-medium text-black/50">
-                            Prayer time
-                          </p>
-                          <div className="flex items-center justify-around">
-                            <div className="text-center">
-                              <div className="mb-1 text-xs text-black/40">
-                                Fajr
-                              </div>
-                              <div className="text-sm font-semibold text-black/70">
-                                06:30
-                              </div>
-                            </div>
-                            <div className="text-center">
-                              <div className="mb-1 text-xs text-black/40">
-                                Dhuhr
-                              </div>
-                              <div className="text-sm font-semibold text-black/70">
-                                13:45
-                              </div>
-                            </div>
-                            <div className="text-center">
-                              <div className="mb-1 text-xs text-black/40">
-                                Asr
-                              </div>
-                              <div className="text-sm font-semibold text-black/70">
-                                16:20
-                              </div>
-                            </div>
+                      <div className="w-full rounded-3xl border border-black/[0.08] bg-white/72 p-5 shadow-[0_10px_28px_rgba(0,0,0,0.065)] backdrop-blur">
+                        <p className="mb-3 text-center text-xs font-medium text-black/50">
+                          Prayer time
+                        </p>
+                        <div className="flex items-center justify-around">
+                          <div className="text-center">
+                            <div className="mb-1 text-xs text-black/40">Fajr</div>
+                            <div className="text-sm font-semibold text-black/70">06:30</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="mb-1 text-xs text-black/40">Dhuhr</div>
+                            <div className="text-sm font-semibold text-black/70">13:45</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="mb-1 text-xs text-black/40">Asr</div>
+                            <div className="text-sm font-semibold text-black/70">16:20</div>
                           </div>
                         </div>
+                      </div>
 
-                        <div className="mt-auto">
-                          <p className="text-center text-lg font-medium tracking-wide text-black/30">
-                            NIYYAH
-                          </p>
-                        </div>
+                      <div className="mt-auto">
+                        <p className="text-center text-lg font-medium tracking-wide text-black/30">
+                          NIYYAH
+                        </p>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
 
-            {/* Cards debajo del hero */}
-            <div className="mx-auto mt-16 grid max-w-[1180px] gap-6 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
+            {/* 3 cards */}
+            <div className="mt-16 grid gap-6 sm:grid-cols-3">
               <FeatureCard
                 icon={Heart}
                 title="Espiritualidad personal"
@@ -311,14 +280,12 @@ export default function Page() {
             </div>
           </div>
         </Container>
-
-        <div className="mt-16 border-t border-black/5" />
       </section>
 
       {/* QUÉ ES */}
       <Section>
-        <div className="mx-auto max-w-[720px] text-center">
-          <h2 className="mb-4 text-[32px] font-medium leading-tight tracking-[-0.01em] text-black/85 sm:text-[36px]">
+        <div className="mx-auto max-w-[760px] text-center">
+          <h2 className="mb-4 text-[34px] font-semibold leading-tight tracking-[-0.01em] text-black/85 sm:text-[40px]">
             Diseñada para tu práctica diaria
           </h2>
           <p className="text-[15px] leading-relaxed text-black/55 sm:text-base">
@@ -326,7 +293,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-[1040px] gap-6 sm:grid-cols-2 lg:mt-14">
+        <div className="mx-auto mt-12 grid max-w-[980px] gap-6 sm:grid-cols-2">
           <FeatureCard
             icon={BookOpen}
             title="Diario espiritual"
@@ -339,8 +306,8 @@ export default function Page() {
           />
           <FeatureCard
             icon={MoonStar}
-            title="Modo Ramadán"
-            desc="Acompaña tu mes sagrado con reflexiones y seguimiento suave."
+            title="Modo Ramadán (simple)"
+            desc="Incluido en la versión gratuita: enfoque suave, sin sobrecarga."
           />
           <FeatureCard
             icon={Shield}
@@ -351,9 +318,9 @@ export default function Page() {
       </Section>
 
       {/* CÓMO FUNCIONA */}
-      <Section id="como-funciona" className="bg-white/30">
-        <div className="mx-auto max-w-[720px] text-center">
-          <h2 className="mb-4 text-[32px] font-medium leading-tight tracking-[-0.01em] text-black/85 sm:text-[36px]">
+      <Section id="como-funciona" className="bg-white/25">
+        <div className="mx-auto max-w-[760px] text-center">
+          <h2 className="mb-4 text-[34px] font-semibold leading-tight tracking-[-0.01em] text-black/85 sm:text-[40px]">
             Tres pasos para empezar
           </h2>
           <p className="text-[15px] leading-relaxed text-black/55 sm:text-base">
@@ -361,7 +328,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-[1040px] gap-6 lg:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-[980px] gap-6 lg:grid-cols-3">
           <Step
             n="1"
             title="Descarga gratis"
@@ -375,15 +342,15 @@ export default function Page() {
           <Step
             n="3"
             title="Crece cuando quieras"
-            desc="Más adelante habrá opciones Premium opcionales. Si no, la versión gratuita es completa."
+            desc="Más adelante habrá opciones Premium opcionales. Si no, la gratuita es completa."
           />
         </div>
       </Section>
 
       {/* FILOSOFÍA */}
       <Section>
-        <div className="mx-auto max-w-[720px] text-center">
-          <h2 className="mb-4 text-[32px] font-medium leading-tight tracking-[-0.01em] text-black/85 sm:text-[36px]">
+        <div className="mx-auto max-w-[760px] text-center">
+          <h2 className="mb-4 text-[34px] font-semibold leading-tight tracking-[-0.01em] text-black/85 sm:text-[40px]">
             Espiritualidad sin presión
           </h2>
           <p className="text-[15px] leading-relaxed text-black/55 sm:text-base">
@@ -391,7 +358,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-[1100px] gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid max-w-[980px] gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <FeatureCard
             icon={Sparkles}
             title="Sin culpa"
@@ -416,11 +383,11 @@ export default function Page() {
       </Section>
 
       {/* GRATIS / PREMIUM */}
-      <Section id="descargar" className="bg-white/30">
-        <div className="mx-auto max-w-[720px] text-center">
-          <h2 className="mb-4 text-[32px] font-medium leading-tight tracking-[-0.01em] text-black/85 sm:text-[36px]">
+      <Section id="descargar" className="bg-white/25">
+        <div className="mx-auto max-w-[760px] text-center">
+          <h2 className="mb-4 text-[34px] font-semibold leading-tight tracking-[-0.01em] text-black/85 sm:text-[40px]">
             Gratis para empezar.{" "}
-            <span className="whitespace-nowrap text-black/50">
+            <span className="whitespace-nowrap text-black/45">
               Premium cuando quieras.
             </span>
           </h2>
@@ -429,55 +396,51 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-[1040px] gap-6 lg:grid-cols-2">
+        <div className="mx-auto mt-12 grid max-w-[980px] gap-7 lg:grid-cols-2">
           {/* Gratis */}
-          <div className="rounded-3xl border border-black/[0.08] bg-white/75 p-8 shadow-[0_16px_48px_rgba(0,0,0,0.06)] backdrop-blur">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/85 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-black/60">
+          <div className="rounded-[34px] border border-black/[0.08] bg-white/75 p-10 shadow-[0_16px_46px_rgba(0,0,0,0.06)] backdrop-blur">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/85 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-black/55">
               GRATIS
             </div>
-            <ul className="mt-5 space-y-3 text-[14px] text-black/65">
-              <li className="flex items-start gap-2">
-                <span className="text-green-600">✓</span>
-                <span>Diario espiritual completo</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-600">✓</span>
-                <span>Qibla y horarios de oración</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-600">✓</span>
-                <span>Duas básicas</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-600">✓</span>
-                <span>Sincronización entre dispositivos</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-600">✓</span>
-                <span>Modo Ramadán (incluido)</span>
-              </li>
+
+            <ul className="mt-6 space-y-4 text-[14px] text-black/65">
+              {[
+                "Diario espiritual completo",
+                "Qibla y horarios de oración",
+                "Duas básicas",
+                "Sincronización entre dispositivos",
+                "Modo Ramadán (simple)",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3">
+                  <span className="mt-[2px] text-green-600">✓</span>
+                  <span>{t}</span>
+                </li>
+              ))}
             </ul>
-            <div className="mt-7">
+
+            <div className="mt-10">
               <PrimaryButton href="#descargar">Descargar gratis</PrimaryButton>
             </div>
           </div>
 
           {/* Premium */}
-          <div className="rounded-3xl border border-black/[0.06] bg-white/45 p-8 shadow-[0_12px_36px_rgba(0,0,0,0.045)] backdrop-blur">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/[0.06] bg-white/65 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-black/45">
+          <div className="rounded-[34px] border border-black/[0.06] bg-white/50 p-10 shadow-[0_12px_34px_rgba(0,0,0,0.045)] backdrop-blur">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-black/[0.06] bg-white/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-black/45">
               PREMIUM{" "}
               <span className="font-normal lowercase text-black/30">
                 (opcional)
               </span>
             </div>
-            <p className="mt-5 text-[14px] leading-relaxed text-black/55">
-              Más adelante podremos añadir funciones opcionales: packs de reflexiones,
-              personalización avanzada o contenido ampliado.
+
+            <p className="mt-6 text-[14px] leading-relaxed text-black/55">
+              Más adelante: packs de reflexiones, contenido ampliado o personalización.
+              Sin presión. Siempre opcional.
             </p>
-            <div className="mt-7">
+
+            <div className="mt-10">
               <Link
                 href="#"
-                className="inline-flex items-center justify-center rounded-full border border-black/[0.12] bg-white/65 px-7 py-3.5 text-sm font-medium text-black/60 transition-all hover:bg-white hover:text-black/75"
+                className="inline-flex items-center justify-center rounded-full border border-black/[0.14] bg-white/70 px-7 py-3.5 text-sm font-medium text-black/60 transition-all hover:bg-white hover:text-black/75"
               >
                 Más adelante
               </Link>
@@ -485,18 +448,18 @@ export default function Page() {
           </div>
         </div>
 
-        <p className="mx-auto mt-7 max-w-[720px] text-center text-xs text-black/40">
+        <p className="mx-auto mt-8 max-w-[760px] text-center text-xs text-black/40">
           No necesitas Premium para usar NIYYAH. La versión gratuita es completa y para siempre.
         </p>
       </Section>
 
       {/* CTA FINAL */}
-      <Section className="pb-22">
-        <div className="mx-auto max-w-[860px] rounded-[44px] border border-black/[0.08] bg-white/65 px-8 py-14 text-center shadow-[0_18px_60px_rgba(0,0,0,0.06)] backdrop-blur sm:px-12">
-          <h2 className="mb-4 text-[32px] font-medium leading-tight tracking-[-0.01em] text-black/85 sm:text-[36px]">
+      <Section className="pb-24">
+        <div className="mx-auto max-w-[860px] rounded-[44px] border border-black/[0.08] bg-white/70 px-10 py-16 text-center shadow-[0_18px_54px_rgba(0,0,0,0.06)] backdrop-blur sm:px-14">
+          <h2 className="mb-4 text-[34px] font-semibold leading-tight tracking-[-0.01em] text-black/85 sm:text-[40px]">
             Empieza hoy. Sin presión.
           </h2>
-          <p className="mx-auto mb-7 max-w-[520px] text-[15px] leading-relaxed text-black/55 sm:text-base">
+          <p className="mx-auto mb-9 max-w-[520px] text-[15px] leading-relaxed text-black/55 sm:text-base">
             Descarga gratis y explora a tu ritmo.
           </p>
           <PrimaryButton href="#descargar">Descargar gratis</PrimaryButton>
@@ -542,9 +505,7 @@ export default function Page() {
           <p className="mt-12 text-center text-xs text-white/40">
             NIYYAH no está afiliada a ninguna institución religiosa.
           </p>
-          <p className="mt-2 text-center text-xs text-white/30">
-            © 2026 NIYYAH App
-          </p>
+          <p className="mt-2 text-center text-xs text-white/30">© 2026 NIYYAH App</p>
         </Container>
       </footer>
     </main>
