@@ -42,17 +42,24 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang="es" className={inter.variable} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         {children}
       </body>
     </html>

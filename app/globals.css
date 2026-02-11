@@ -1,65 +1,23 @@
 @import "tailwindcss";
 
-/* Design Tokens - Mi Oración */
+/* Utilities opcionales (si las usas) */
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Tokens */
 :root {
-  /* Colors - Calm & Premium */
-  --background: #F8FAFC;
-  --card: #FFFFFF;
-  --text-primary: #1E293B;
-  --text-secondary: #64748B;
-  --accent: #3B82F6;
-  --accent-hover: #2563EB;
-  
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-2xl: 4rem;
-  
-  /* Border Radius */
-  --radius-card: 20px;
-  --radius-button: 12px;
-  
-  /* Shadows - Very subtle */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --background: #F6F3EE;
+  --text-primary: #101418;
+  --accent: #2E6BFF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-card: var(--card);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  
-  /* Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  
-  /* Spacing scale */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-2xl: 4rem;
-  --spacing-3xl: 6rem;
-  
-  /* Border radius */
-  --radius-card: 20px;
-  --radius-button: 12px;
-}
-
-/* Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Base */
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -69,76 +27,34 @@ html {
 body {
   background: var(--background);
   color: var(--text-primary);
-  font-family: var(--font-sans);
-  line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Smooth Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+/* Selección */
+::selection {
+  background-color: rgba(46, 107, 255, 0.18);
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.8s ease-out;
-}
-
-.animate-slide-down {
-  animation: slideDown 0.8s ease-out;
-}
-
-/* Stagger animations for children */
-.stagger-children > * {
-  animation: slideUp 0.8s ease-out;
-  animation-fill-mode: both;
-}
-
-.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
-.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
-
-/* Focus states for accessibility */
+/* Focus accesible */
 *:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid rgba(46, 107, 255, 0.6);
   outline-offset: 2px;
 }
 
-/* Selection */
-::selection {
-  background-color: rgba(59, 130, 246, 0.2);
-  color: var(--text-primary);
+/* Imágenes seguras */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ✅ Touch targets: SOLO botones y links “tipo botón”
+   (NO a todos los <a>) */
+@media (max-width: 640px) {
+
+  button,
+  [role="button"],
+  a.btn,
+  a[data-touch="true"] {
+    min-height: 44px;
+  }
 }

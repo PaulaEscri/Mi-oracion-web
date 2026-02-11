@@ -10,7 +10,7 @@ export const siteConfig = {
     showRamadanSection: true, // Set to false to hide Ramadan section
 
     // Contact
-    supportEmail: "soporte@niyyah.app",
+    supportEmail: "support@niyyahprayer.com",
 
     // SEO
     seo: {
@@ -23,3 +23,4 @@ export const siteConfig = {
     // Legal
     legalDisclaimer: "NIYYAH no está afiliada a ninguna institución religiosa.",
 } as const;
+
