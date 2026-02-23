@@ -1,3 +1,5 @@
+import Navbar from "@/components/Navbar";
+import WaitlistSection from "@/components/WaitlistSection";
 import Link from "next/link";
 import {
   Heart,
@@ -26,7 +28,7 @@ function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`py-14 sm:py-20 lg:py-24 ${className}`}>
+    <section id={id} className={`py-0 ${className}`}>
       <Container>{children}</Container>
     </section>
   );
@@ -34,7 +36,7 @@ function Section({
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-black/10 bg-white/55 px-3 py-1 text-xs font-medium text-black/60 backdrop-blur">
+    <span className="inline-flex items-center rounded-full border border-black/10 bg-[#F9F2E6]/70 px-3 py-1 text-xs font-medium text-black/60 backdrop-blur transition-all duration-300 hover:bg-[#F9F2E6]/90 hover:scale-105 hover:shadow-sm">
       {children}
     </span>
   );
@@ -42,7 +44,7 @@ function Pill({ children }: { children: React.ReactNode }) {
 
 function PrimaryButton({
   children,
-  href = "#descargar",
+  href = "#waitlist",
 }: {
   children: React.ReactNode;
   href?: string;
@@ -50,9 +52,10 @@ function PrimaryButton({
   return (
     <Link
       href={href}
-      className="inline-flex items-center justify-center rounded-full bg-[#5B8DEF] px-8 py-3.5 text-sm font-medium text-white shadow-[0_10px_26px_rgba(91,141,239,0.28)] transition-all duration-300 hover:bg-[#4A7CD8] hover:shadow-[0_14px_34px_rgba(91,141,239,0.34)]"
+      className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-[#1B1E4B] px-7 py-3.5 text-sm font-medium text-[#F6E7C6] shadow-[0_10px_30px_rgba(27,30,75,0.22)] transition-all duration-300 hover:bg-[#15183E] hover:shadow-[0_14px_38px_rgba(27,30,75,0.28)] hover:scale-[1.02] active:scale-[0.98]"
     >
-      {children}
+      <span className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100 transition-opacity" />
+      <span className="relative">{children}</span>
     </Link>
   );
 }
@@ -87,9 +90,9 @@ function FeatureCard({
   desc: string;
 }) {
   return (
-    <div className="group rounded-3xl border border-black/[0.08] bg-white/65 p-7 shadow-[0_10px_26px_rgba(0,0,0,0.045)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_14px_34px_rgba(0,0,0,0.065)]">
-      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-black/[0.08] bg-gradient-to-br from-white to-gray-50/60 transition-transform duration-300 group-hover:scale-[1.03]">
-        <Icon className="h-5 w-5 text-black/55" strokeWidth={1.5} />
+    <div className="group rounded-3xl border border-black/[0.08] bg-white/65 p-7 shadow-[0_10px_26px_rgba(0,0,0,0.045)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_14px_34px_rgba(0,0,0,0.065)] hover:-translate-y-1">
+      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-black/[0.08] bg-gradient-to-br from-white to-gray-50/60 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+        <Icon className="h-5 w-5 text-black/55 transition-colors group-hover:text-[#1B1E4B]" strokeWidth={1.5} />
       </div>
       <h3 className="mb-2 text-[15px] font-semibold leading-snug text-black/80">
         {title}
@@ -121,58 +124,22 @@ function Step({
   );
 }
 
-function Navbar() {
-  return (
-    <div className="sticky top-0 z-50 border-b border-black/10 bg-[#F6F3EE]/80 backdrop-blur">
-      <Container>
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="text-sm font-semibold tracking-wide text-black/80">
-            NIYYAH
-          </Link>
 
-          <div className="flex items-center gap-3">
-            <Link
-              href="#descargar"
-              className="inline-flex items-center justify-center rounded-full border border-black/15 bg-white/55 px-4 py-2 text-sm font-medium text-black/70 transition-colors hover:bg-white/70"
-            >
-              Descargar
-            </Link>
-
-            {/* Idioma (dummy por ahora: sin onChange para evitar error Server Component) */}
-            <label className="sr-only" htmlFor="lang">
-              Idioma
-            </label>
-            <select
-              id="lang"
-              defaultValue="es"
-              className="h-10 rounded-full border border-black/15 bg-white/55 px-4 text-sm font-medium text-black/70 outline-none transition-colors hover:bg-white/70"
-            >
-              <option value="es">ES</option>
-              <option value="en">EN</option>
-              <option value="fr">FR</option>
-              <option value="ar">AR</option>
-            </select>
-          </div>
-        </div>
-      </Container>
-    </div>
-  );
-}
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-[#F6F3EE] text-black">
       <Navbar />
 
-      {/* Fondo suave “premium” */}
+      {/* Fondo */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-[-12%] top-[-10%] h-[520px] w-[520px] rounded-full bg-blue-200/25 blur-3xl" />
-        <div className="absolute right-[-12%] top-[6%] h-[560px] w-[560px] rounded-full bg-purple-200/18 blur-3xl" />
-        <div className="absolute left-[20%] bottom-[-18%] h-[520px] w-[520px] rounded-full bg-amber-200/12 blur-3xl" />
+        <div className="absolute left-[-12%] top-[-10%] h-[520px] w-[520px] rounded-full bg-blue-200/25 blur-3xl animate-float" style={{ animationDelay: '0s' }} />
+        <div className="absolute right-[-12%] top-[6%] h-[560px] w-[560px] rounded-full bg-purple-200/18 blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute left-[20%] bottom-[-18%] h-[520px] w-[520px] rounded-full bg-amber-200/12 blur-3xl animate-float" style={{ animationDelay: '2s' }} />
       </div>
 
       {/* HERO */}
-      <section className="relative overflow-hidden pt-10 sm:pt-14 lg:pt-18">
+      <section className="relative overflow-hidden pt-10 pb-[81px] sm:pt-14 lg:pt-18">
         <Container>
           <div className="mx-auto max-w-[1100px]">
             <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
@@ -196,23 +163,23 @@ export default function Page() {
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center gap-5 lg:justify-start">
-                  <PrimaryButton href="#descargar">Descargar gratis</PrimaryButton>
+                  <PrimaryButton href="#waitlist">Apuntarme</PrimaryButton>
                   <SecondaryLink href="#como-funciona">Ver cómo funciona</SecondaryLink>
                 </div>
 
                 <p className="mt-5 text-xs text-black/40">
-                  Disponible en iOS y Android
+                  Disponible para iOS y Android en Abril
                 </p>
 
-                {/* mini “vida” sin ruido */}
+                {/* Mini etiquetas de la app  */}
                 <div className="mt-10 flex items-center justify-center gap-6 text-xs text-black/40 lg:justify-start">
-                  <span className="rounded-full border border-black/10 bg-white/45 px-3 py-1">
+                  <span className="rounded-full border border-black/10 bg-white/45 px-3 py-1 transition-all duration-300 hover:bg-white/70 hover:scale-105 hover:text-black/60">
                     Sin anuncios intrusivos
                   </span>
-                  <span className="rounded-full border border-black/10 bg-white/45 px-3 py-1">
+                  <span className="rounded-full border border-black/10 bg-white/45 px-3 py-1 transition-all duration-300 hover:bg-white/70 hover:scale-105 hover:text-black/60">
                     Diario privado
                   </span>
-                  <span className="rounded-full border border-black/10 bg-white/45 px-3 py-1">
+                  <span className="rounded-full border border-black/10 bg-white/45 px-3 py-1 transition-all duration-300 hover:bg-white/70 hover:scale-105 hover:text-black/60">
                     A tu ritmo
                   </span>
                 </div>
@@ -220,9 +187,9 @@ export default function Page() {
 
               {/* Right - iPhone */}
               <div className="flex justify-center lg:justify-end">
-                <div className="relative">
-                  <div className="absolute -inset-10 rounded-[70px] bg-white/30 opacity-70 blur-2xl" />
-                  <div className="relative h-[520px] w-[270px] overflow-hidden rounded-[54px] border border-black/[0.12] bg-white shadow-[0_24px_70px_rgba(0,0,0,0.16),0_0_0_1px_rgba(255,255,255,0.55)_inset] sm:h-[580px] sm:w-[300px]">
+                <div className="relative animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                  <div className="absolute -inset-10 rounded-[70px] bg-white/30 opacity-70 blur-2xl animate-float" />
+                  <div className="relative h-[520px] w-[270px] overflow-hidden rounded-[54px] border border-black/[0.12] bg-white shadow-[0_24px_70px_rgba(0,0,0,0.16),0_0_0_1px_rgba(255,255,255,0.55)_inset] sm:h-[580px] sm:w-[300px] hover:shadow-[0_30px_85px_rgba(0,0,0,0.2)] transition-all duration-500 hover:scale-[1.02]">
                     <div className="absolute left-1/2 top-3 z-10 h-7 w-28 -translate-x-1/2 rounded-full bg-black" />
                     <div className="flex h-full w-full flex-col items-center justify-center bg-[#F6F3EE] px-8 pt-14 pb-8">
                       <div className="mb-8 opacity-30">
@@ -283,7 +250,7 @@ export default function Page() {
       </section>
 
       {/* QUÉ ES */}
-      <Section>
+      <Section className="mt-[81px] pb-[81px]">
         <div className="mx-auto max-w-[760px] text-center">
           <h2 className="mb-4 text-[34px] font-semibold leading-tight tracking-[-0.01em] text-black/85 sm:text-[40px]">
             Diseñada para tu práctica diaria
@@ -318,7 +285,7 @@ export default function Page() {
       </Section>
 
       {/* CÓMO FUNCIONA */}
-      <Section id="como-funciona" className="bg-white/25">
+      <Section id="como-funciona" className="pt-[81px] pb-[81px] bg-white/25">
         <div className="mx-auto max-w-[760px] text-center">
           <h2 className="mb-4 text-[34px] font-semibold leading-tight tracking-[-0.01em] text-black/85 sm:text-[40px]">
             Tres pasos para empezar
@@ -347,8 +314,13 @@ export default function Page() {
         </div>
       </Section>
 
+      {/* WAITLIST */}
+      <div className="pt-[81px] mt-0">
+        <WaitlistSection />
+      </div>
+
       {/* FILOSOFÍA */}
-      <Section>
+      <Section className="mt-[162px] pb-[81px]">
         <div className="mx-auto max-w-[760px] text-center">
           <h2 className="mb-4 text-[34px] font-semibold leading-tight tracking-[-0.01em] text-black/85 sm:text-[40px]">
             Espiritualidad sin presión
@@ -382,8 +354,8 @@ export default function Page() {
         </div>
       </Section>
 
-      {/* GRATIS / PREMIUM */}
-      <Section id="descargar" className="bg-white/25">
+      {/* GRATIS / PREMIUM cards */}
+      <Section id="descargar" className="pt-[81px] pb-[81px] bg-white/25">
         <div className="mx-auto max-w-[760px] text-center">
           <h2 className="mb-4 text-[34px] font-semibold leading-tight tracking-[-0.01em] text-black/85 sm:text-[40px]">
             Gratis para empezar.{" "}
@@ -419,7 +391,7 @@ export default function Page() {
             </ul>
 
             <div className="mt-10">
-              <PrimaryButton href="#descargar">Descargar gratis</PrimaryButton>
+              <PrimaryButton href="#waitlist">Apuntarme a la lista</PrimaryButton>
             </div>
           </div>
 
@@ -454,7 +426,7 @@ export default function Page() {
       </Section>
 
       {/* CTA FINAL */}
-      <Section className="pb-24">
+      <Section className="pt-[81px] pb-24">
         <div className="mx-auto max-w-[860px] rounded-[44px] border border-black/[0.08] bg-white/70 px-10 py-16 text-center shadow-[0_18px_54px_rgba(0,0,0,0.06)] backdrop-blur sm:px-14">
           <h2 className="mb-4 text-[34px] font-semibold leading-tight tracking-[-0.01em] text-black/85 sm:text-[40px]">
             Empieza hoy. Sin presión.
@@ -462,7 +434,7 @@ export default function Page() {
           <p className="mx-auto mb-9 max-w-[520px] text-[15px] leading-relaxed text-black/55 sm:text-base">
             Descarga gratis y explora a tu ritmo.
           </p>
-          <PrimaryButton href="#descargar">Descargar gratis</PrimaryButton>
+          <PrimaryButton href="#waitlist">Apuntarme a la lista</PrimaryButton>
         </div>
       </Section>
 
