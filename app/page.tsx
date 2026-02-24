@@ -128,7 +128,7 @@ function Step({
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-[#F6F3EE] text-black">
+    <main className="min-h-screen bg-[#F6F3EE] text-black overflow-x-clip">
       <Navbar />
 
       {/* Fondo */}
@@ -172,7 +172,7 @@ export default function Page() {
                 </p>
 
                 {/* Mini etiquetas de la app  */}
-                <div className="mt-10 flex items-center justify-center gap-6 text-xs text-black/40 lg:justify-start">
+                <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-xs text-black/40 lg:justify-start lg:gap-6">
                   <span className="rounded-full border border-black/10 bg-white/45 px-3 py-1 transition-all duration-300 hover:bg-white/70 hover:scale-105 hover:text-black/60">
                     Sin anuncios intrusivos
                   </span>

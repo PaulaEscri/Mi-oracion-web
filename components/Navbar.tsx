@@ -7,15 +7,16 @@ export default function Navbar() {
         <header className="sticky top-0 z-50 border-b border-black/5 bg-[#F6F3EE]/80 backdrop-blur">
             <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between px-6 py-4 sm:px-10 lg:px-16">
                 {/* Brand */}
-                <Link href="/" className="flex items-center gap-3">
-                    <Image
-                        src="/brand/niyyah-logo.png"
-                        alt="NIYYAH"
-                        width={64}
-                        height={64}
-                        className="h-16 w-16 rounded-full transition-transform duration-300 hover:scale-105"
-                        priority
-                    />
+                <Link href="/" className="flex items-center gap-3 group">
+                    <div className="relative h-12 w-12 overflow-hidden rounded-full shadow-sm transition-transform duration-300 group-hover:scale-105">
+                        <Image
+                            src="/brand/Logo-Niyyah.jpg"
+                            alt="NIYYAH"
+                            fill
+                            className="object-cover scale-[1.45] transition-transform duration-300 group-hover:scale-[1.55]"
+                            priority
+                        />
+                    </div>
                     <span className="text-sm font-semibold tracking-[0.18em] text-black/70">
                         NIYYAH
                     </span>

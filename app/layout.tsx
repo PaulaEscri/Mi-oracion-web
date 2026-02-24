@@ -14,6 +14,14 @@ export const metadata: Metadata = {
   description: siteConfig.seo.description,
   keywords: siteConfig.seo.keywords.join(", "),
   authors: [{ name: "NIYYAH" }],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.ico", type: "image/jpeg" }
+    ],
+    shortcut: [{ url: "/favicon.ico", type: "image/jpeg" }],
+    apple: [{ url: "/favicon.ico", type: "image/jpeg" }],
+  },
   openGraph: {
     type: "website",
     locale: "es_ES",
@@ -56,9 +64,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={inter.variable} suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
       <body className="antialiased" suppressHydrationWarning>
         {children}
       </body>
